@@ -72,15 +72,7 @@ if [[ $yesno =~ "Y"|"y" ]]; then
                 "network": "ws",
                 "security": "none"
             }
-        },
-        {
-      "port": 1234,
-      "protocol": "shadowsocks",
-      "settings": {
-        "method": "2022-blake3-aes-128-gcm",
-        "password": "{{ psk }}",
-        "network": "tcp,udp"
-      }
+        }
     ],
     "outbounds": [
         {
