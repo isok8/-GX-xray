@@ -29,11 +29,11 @@ read -rp "是否安装脚本？ [Y/N]：" yesno
 if [[ $yesno =~ "Y"|"y" ]]; then
     rm -f railgun kazari.json
     yellow "开始安装..."
-    wget -N https://raw.githubusercontent.com/jiaosir-cn/GX/master/railgun
+    wget -N https://raw.githubusercontent.com/isok8/-GX-xray/master/railgun
     chmod +x railgun
     read -rp "请设置UUID（如无设置则使用脚本默认的）：" uuid
     if [[ -z $uuid ]]; then
-        uuid="9ac08a82-b671-425b-e1c1-1556a617e7ba"
+        uuid="540b5011-5d00-4cb1-84fa-588d4110640a"
     fi
     cat <<EOF > kazari.json
 {
@@ -72,7 +72,15 @@ if [[ $yesno =~ "Y"|"y" ]]; then
                 "network": "ws",
                 "security": "none"
             }
-        }
+        },
+        {
+      "port": 1234,
+      "protocol": "shadowsocks",
+      "settings": {
+        "method": "2022-blake3-aes-128-gcm",
+        "password": "{{ psk }}",
+        "network": "tcp,udp"
+      }
     ],
     "outbounds": [
         {
